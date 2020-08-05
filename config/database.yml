@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: root
+  host: 127.0.0.1
+  port: 3304
+
+development:
+  <<: *default
+  database: line_todo_list_development
+
+test:
+  <<: *default
+  database: line_todo_list_test
+
+production:
+  <<: *default
+  database: line_todo_list_production
+  username: line_todo_list
+  password: <%= ENV['LINE_TODO_LIST_DATABASE_PASSWORD'] %>
